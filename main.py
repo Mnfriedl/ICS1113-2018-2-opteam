@@ -1,5 +1,5 @@
 from gurobipy import *
-from parameters.py import *
+from parameters import *
 
 model = Model("Trabajo pais")
 
