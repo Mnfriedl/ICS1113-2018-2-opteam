@@ -1,17 +1,20 @@
 import random
 import csv
+import math
 
-MIN_VOLS = 67
-MAX_VOLS = 93
+MIN_VOLS = 270
+MAX_VOLS = 315
+TOTAL_VOLS = random.randint(MIN_VOLS, MAX_VOLS)
+
+WOMEN_RATE = 0.55
 CAREERS = 40*[1] + 25*[2] + 15*[3] + 20*[4] + 10*[5]
 TASKS = 5
-GENDER = 60*[0] + 40*[1] 
+GENDER = math.floor(WOMEN_RATE*TOTAL_VOLS)*[0] + math.ceil((1-WOMEN_RATE)*TOTAL_VOLS)*[1]
 
-TOTAL_VOLS = random.randint(MIN_VOLS, MAX_VOLS)
 VOLS = []
 for i in range(TOTAL_VOLS):
     volunteer = {
-        'gender': random.choice(GENDER),
+        'gender': GENDER.pop(random.randint(0, len(GENDER) - 1)),
         'career': random.choice(CAREERS),
         'habilities': []
     }
