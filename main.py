@@ -39,6 +39,14 @@ model.addConstrs((quicksum(X[volunteer][location] for volunteer in parameters.vo
 model.addConstrs((quicksum(Y[volunteer][task] for task in range(1, 6)) == 1 for volunteer in parameters.volunteers),
     name="r6")
 
+# Distancia a servicios más cercanos
+model.addConstrs((parameters.locations_dict[location]["Distancia a posta más cercana (km)"] * O[location] <= parameters.locations_dict[location]["Distancia máxima aceptable a posta"] for location in parameters.locations),
+    name="r7-1")
+model.addConstrs((parameters.locations_dict[location]["Distancia a alimentos"] * O[location] <= parameters.locations_dict[location]["Distancia máxima a alimentos"] for location in parameters.locations),
+    name="r7-2")
+
+
+
 # función objetivo
 #! Se está ocupando pandas, puede que sea necesario cambiarlo
 obj = quicksum(
