@@ -1,1 +1,10 @@
-﻿Localidad,Distancia a posta más cercana (km),Distancia a alimentos,Voluntarios mínimos,Capacidad máxima,Costo traslado,Distancia máxima aceptable a posta,Distancia máxima a alimentos,Distancia al lugar de construcción,Costo mínimo,Costo máximoPindaco,19.9,6.633,30,35,21000,40,15,4.975,630000,735000Folilco,23.4,7.8,30,35,17000,40,15,5.85,510000,595000Lenca,35.4,11.8,30,35,18000,40,15,8.85,540000,630000Villarrica,10,3.333,30,35,13200,40,15,2.5,396000,462000Barros Arana,12.2,4.067,30,35,15200,40,15,3.05,456000,532000Entre Ríos,36.9,12.3,30,35,18200,40,15,9.225,546000,637000Villa Las Rosas,42.6,14.2,30,35,16000,40,15,10.65,480000,560000Santa Clara,37.9,12.633,30,35,15000,40,15,9.475,450000,525000Parral,6.5,2.167,30,35,10500,40,15,1.625,315000,367500
+﻿Localidad,Distancia a posta más cercana (km),Distancia a alimentos,Voluntarios mínimos,Capacidad máxima,Costo traslado,Distancia máxima aceptable a posta,Distancia máxima a alimentos,Distancia al lugar de construcción,Costo mínimo,Costo máximo
+Pindaco,19.9,6.633,30,35,21000,40,15,4.975,630000,735000
+Folilco,23.4,7.8,30,35,17000,40,15,5.85,510000,595000
+Lenca,35.4,11.8,30,35,18000,40,15,8.85,540000,630000
+Villarrica,10,3.333,30,35,13200,40,15,2.5,396000,462000
+Barros Arana,12.2,4.067,30,35,15200,40,15,3.05,456000,532000
+Entre Rios,36.9,12.3,30,35,18200,40,15,9.225,546000,637000
+Villa Las Rosas,42.6,14.2,30,35,16000,40,15,10.65,480000,560000
+Santa Clara,37.9,12.633,30,35,15000,40,15,9.475,450000,525000
+Parral,6.5,2.167,30,35,10500,40,15,1.625,315000,367500
