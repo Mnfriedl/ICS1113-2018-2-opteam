@@ -49,6 +49,11 @@ model.addConstrs((parameters.locations_dict[location]["Distancia a alimentos"] *
 model.addConstrs((parameters.locations_dict[location]["Distancia al lugar de construcción"] * O[location] <= parameters.max_distance_to_construction for location in parameters.locations),
     name="r8")
 
+# Cantidad de hombres / mujeres por comunidad
+model.addConstrs((quicksum(X[volunteer, location] * parameters.volunteers_info.iloc[volunteer][gender] for volunteer in parameters.volunteers) <= (parameters.mu / 100) * quicksum(X[volunteer, location] for volunteer in parameters.volunteers) for location in parameters.locations),
+    name="r9")
+model.addConstrs((quicksum(X[volunteer, location] * (1 - parameters.volunteers_info.iloc[volunteer][gender]) for volunteer in parameters.volunteers) <= (parameters.delta / 100) * quicksum(X[volunteer, location] for volunteer in parameters.volunteers) for location in parameters.locations),
+    name="r10")
 
 # función objetivo
 #! Se está ocupando pandas, puede que sea necesario cambiarlo
