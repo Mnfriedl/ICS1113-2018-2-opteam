@@ -30,3 +30,83 @@ Best objective -, best bound -, gap -
 
     Variable            X 
 -------------------------
+
+Gurobi 8.0.1 (win64, Python) logging started 10/14/18 17:42:49
+
+Academic license - for non-commercial use only
+
+Gurobi 8.0.1 (win64, Python) logging started 10/14/18 17:43:07
+
+Academic license - for non-commercial use only
+Optimize a model with 396 rows, 16479 columns and 15786 nonzeros
+Variable types: 0 continuous, 16479 integer (16479 binary)
+Coefficient statistics:
+  Matrix range     [5e-02, 4e+01]
+  Objective range  [2e+00, 8e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 4e+01]
+Presolve removed 168 rows and 13459 columns
+Presolve time: 0.00s
+
+Explored 0 nodes (0 simplex iterations) in 0.01 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 0
+
+Model is infeasible
+Best objective -, best bound -, gap -
+
+    Variable            X 
+-------------------------
+
+Gurobi 8.0.1 (win64, Python) logging started 10/14/18 17:50:08
+
+Academic license - for non-commercial use only
+
+Gurobi 8.0.1 (win64, Python) logging started 10/14/18 17:52:31
+
+Academic license - for non-commercial use only
+Optimize a model with 441 rows, 16479 columns and 28341 nonzeros
+Variable types: 0 continuous, 16479 integer (16479 binary)
+Coefficient statistics:
+  Matrix range     [5e-02, 4e+01]
+  Objective range  [2e+00, 8e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 4e+01]
+Presolve removed 213 rows and 13459 columns
+Presolve time: 0.00s
+
+Explored 0 nodes (0 simplex iterations) in 0.01 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 0
+
+Model is infeasible
+Best objective -, best bound -, gap -
+
+    Variable            X 
+-------------------------
+
+Gurobi 8.0.1 (win64, Python) logging started 10/14/18 17:53:04
+
+Academic license - for non-commercial use only
+Optimize a model with 441 rows, 16479 columns and 28341 nonzeros
+Variable types: 0 continuous, 16479 integer (16479 binary)
+Coefficient statistics:
+  Matrix range     [5e-02, 4e+01]
+  Objective range  [2e+00, 8e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 4e+01]
+Presolve removed 213 rows and 13459 columns
+Presolve time: 0.00s
+
+Explored 0 nodes (0 simplex iterations) in 0.01 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 0
+
+Model is infeasible
+Best objective -, best bound -, gap -
+
+    Variable            X 
+-------------------------

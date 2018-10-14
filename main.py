@@ -50,9 +50,9 @@ model.addConstrs((parameters.locations_dict[location]["Distancia al lugar de con
     name="r8")
 
 # Cantidad de hombres / mujeres por comunidad
-model.addConstrs((quicksum(X[volunteer, location] * parameters.volunteers_info.iloc[volunteer][gender] for volunteer in parameters.volunteers) <= (parameters.mu / 100) * quicksum(X[volunteer, location] for volunteer in parameters.volunteers) for location in parameters.locations),
+model.addConstrs((quicksum(X[volunteer, location] * parameters.volunteers_info.iloc[volunteer]["gender"] for volunteer in parameters.volunteers) <= (parameters.mu / 100) * quicksum(X[volunteer, location] for volunteer in parameters.volunteers) for location in parameters.locations),
     name="r9")
-model.addConstrs((quicksum(X[volunteer, location] * (1 - parameters.volunteers_info.iloc[volunteer][gender]) for volunteer in parameters.volunteers) <= (parameters.delta / 100) * quicksum(X[volunteer, location] for volunteer in parameters.volunteers) for location in parameters.locations),
+model.addConstrs((quicksum(X[volunteer, location] * (1 - parameters.volunteers_info.iloc[volunteer]["gender"]) for volunteer in parameters.volunteers) <= (parameters.delta / 100) * quicksum(X[volunteer, location] for volunteer in parameters.volunteers) for location in parameters.locations),
     name="r10")
 
 # Cantidad de personas de la misma carrera por comunidad
@@ -60,7 +60,8 @@ model.addConstrs((quicksum(X[volunteer, location] * (1 if parameters.volunteers_
     name="r11")
 
 # Cantidad de personas por tarea por comunidad
-
+model.addConstrs((quicksum(W[volunteer, task, location] for volunteer in parameters.volunteers) <= parameters.tasks_info.iloc[parameters.locations.index(location)]["min_vols_task_{}".format(task)] for location in parameters.locations for task in range(1, 6)),
+    name="r12")
 
 # función objetivo
 obj = quicksum(
