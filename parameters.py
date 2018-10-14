@@ -19,5 +19,8 @@ mu = 5
 delta = 5
 gamma = 5
 max_distance_to_construction = 10
+max_distance_between_communities = 5000
+k = 590000
 
-print(tasks_info)
+if __name__ == "__main__":
+    print(distances_dict)

@@ -9,11 +9,11 @@ model = Model("Trabajo pais")
 X = model.addVars(parameters.volunteers, parameters.locations, vtype=GRB.BINARY, name="assigned_to_community")
 Y = model.addVars(parameters.volunteers, range(1, 6), vtype=GRB.BINARY, name="assigned_to_task")
 W = model.addVars(parameters.volunteers, range(1, 6), parameters.locations, vtype=GRB.BINARY, name="assigned_to_community_on_task")
-O = model.addVars(parameters.locations, vtype=GRB.BINARY, name="assign_community")
-#? A
-#? F
-#? H
-J = model.addVars(parameters.locations, vtype=GRB.BINARY, name="assigned_to_group")
+O = model.addVars(parameters.locations, vtype=GRB.BINARY, name="assign_volunteer_to_community")
+A = model.addVars(parameters.locations, range(1, 10), vtype=GRB.BINARY, name="community_belongs_to_group")
+F = model.addVars(parameters.locations, parameters.locations, range(1, 10), vtype=GRB.BINARY, name="both_communities_belong_to_group")
+H = model.addVars(range(1, 10), vtype=GRB.BINARY, name="assign_community_to_group")
+J = model.addVars(parameters.locations, vtype=GRB.INTEGER, name="assigned_to_group")
 
 # Actualización del modelo
 model.update()
@@ -62,6 +62,33 @@ model.addConstrs((quicksum(X[volunteer, location] * (1 if parameters.volunteers_
 # Cantidad de personas por tarea por comunidad
 model.addConstrs((quicksum(W[volunteer, task, location] for volunteer in parameters.volunteers) <= parameters.tasks_info.iloc[parameters.locations.index(location)]["min_vols_task_{}".format(task)] for location in parameters.locations for task in range(1, 6)),
     name="r12")
+
+# Utilizar solo los primeros grupos
+model.addConstrs((H[g] >= H[g + 1] for g in range(1, 9)),
+    name="r13")
+
+#! Distancia máxima entre comunidades del mismo grupo
+#model.addConstrs((parameters.distances_dict[c1][c2] <= parameters.max_distance_between_communities + (1 - F[c1, c2, g]) * parameters.k for c1 in [x for x in parameters.locations if x not in parameters.locations_plane] for c2 in [x for x in parameters.locations if x not in parameters.locations_plane] for g in range(1, 10)),
+#    name="r14")
+
+# Los grupos tienen 0 o 3 personas cada uno
+model.addConstrs((quicksum(A[location, g] for location in [x for x in parameters.locations if x not in parameters.locations_plane]) == 3*H[g] for g in range(1, 10)),
+    name="r15")
+
+# Comunidades a las que no se irá no pertenecen a un grupo
+model.addConstrs((J[location] <= O[location] for location in [x for x in parameters.locations if x not in parameters.locations_plane]),
+    name="r16")
+
+# Cada comunidad solo puede pertenecer a un grupo
+model.addConstrs((J[location] <= 1 for location in [x for x in parameters.locations if x not in parameters.locations_plane]),
+    name="r17")
+
+# Relación entre variables
+
+
+# Naturaleza de las variables
+model.addConstrs((J[location] >= 0 for location in parameters.locations),
+    name="nature")
 
 # función objetivo
 obj = quicksum(
