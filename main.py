@@ -20,10 +20,8 @@ model.update()
 
 # Restricciones
 # Cumplir con el presupuesto
-#! Esta restricción cambió
-# model.addConstrs((quicksum(parameters.locations_dict[location]["Costo traslado"] * O[location] for location in parameters.locations) - 
-#     (1/3)*quicksum(parameters.locations_dict[location]["Costo traslado"] * J[location] for location in parameters.locations if location not in parameters.locations_plane) <= parameters.budget),
-#     name="r2")
+model.addConstr((quicksum(parameters.locations_dict[location]["Costo traslado"] * (O[location] - (1/3)*J[location]) for location in [x for x in parameters.locations if x not in parameters.locations_plane]) + quicksum(parameters.locations_dict[c]["Costo traslado"] * X[v, c] for c in parameters.locations_plane for v in parameters.volunteers) <= parameters.budget),
+    name="r2")
 
 # Tamaño de los grupos
 model.addConstrs((quicksum(X[(volunteer, location)] for volunteer in parameters.volunteers) <= parameters.locations_dict[location]["Capacidad máxima"] * O[location] for location in parameters.locations), 

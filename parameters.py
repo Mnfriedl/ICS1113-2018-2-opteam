@@ -23,4 +23,4 @@ max_distance_between_communities = 5000
 k = 590000
 
 if __name__ == "__main__":
-    print(distances_dict)
+    print(locations_dict)

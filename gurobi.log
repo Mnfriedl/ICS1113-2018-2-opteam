@@ -266,3 +266,35 @@ Best objective -, best bound -, gap -
 
     Variable            X 
 -------------------------
+
+Gurobi 8.0.1 (win64, Python) logging started 10/14/18 19:11:29
+
+Academic license - for non-commercial use only
+
+Gurobi 8.0.1 (win64, Python) logging started 10/14/18 19:11:50
+
+Academic license - for non-commercial use only
+
+Gurobi 8.0.1 (win64, Python) logging started 10/14/18 19:13:16
+
+Academic license - for non-commercial use only
+Optimize a model with 39855 rows, 17298 columns and 120388 nonzeros
+Variable types: 0 continuous, 17298 integer (17289 binary)
+Coefficient statistics:
+  Matrix range     [5e-02, 6e+05]
+  Objective range  [2e+00, 8e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+06]
+Presolve removed 802 rows and 715 columns
+Presolve time: 0.02s
+
+Explored 0 nodes (0 simplex iterations) in 0.03 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 0
+
+Model is infeasible
+Best objective -, best bound -, gap -
+
+    Variable            X 
+-------------------------
