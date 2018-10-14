@@ -4,7 +4,7 @@ import math
 
 MIN_VOLS = 270
 MAX_VOLS = 315
-TOTAL_VOLS = random.randint(MIN_VOLS, MAX_VOLS)
+TOTAL_VOLS = 270
 
 LOCATIONS = 9
 
