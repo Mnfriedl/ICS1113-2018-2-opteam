@@ -9,5 +9,10 @@ distances = distances.set_index("Localidad")
 volunteers = volunteers_info["volunteer_id"].tolist()
 careers = volunteers_info["career"].unique().tolist()
 locations = locations_info.index.tolist()
+locations_plane = ["Pindaco", "Folilco"]
 locations_dict = locations_info.T.to_dict()
 distances_dict = distances.T.to_dict()
+
+budget = 1000000
+
+print(locations_dict)

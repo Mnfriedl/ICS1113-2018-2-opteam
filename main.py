@@ -1,22 +1,38 @@
+# encoding: utf-8
+
 from gurobipy import *
 import parameters
 
 model = Model("Trabajo pais")
 
 # Variables
-x = model.addVars(parameters.voluntaries, parameters.communities, vtype=GRB.BINARY, name="assigned_to_community")
-y = model.addVars(parameters.voluntaries, parameters.tasks, vtype=GRB.BINARY, name="assigned_to_task")
-w = model.addVars(parameters.voluntaries, parameters.tasks, parameters.communities, vtype=GRB.BINARY, name="assigned_to_community_on_task")
-o = model.addVars(parameters.communities, vtype=GRB.BINARY, name="assign_community")
+X = model.addVars(parameters.volunteers, parameters.locations, vtype=GRB.BINARY, name="assigned_to_community")
+Y = model.addVars(parameters.volunteers, parameters.tasks, vtype=GRB.BINARY, name="assigned_to_task")
+W = model.addVars(parameters.volunteers, parameters.tasks, parameters.locations, vtype=GRB.BINARY, name="assigned_to_community_on_task")
+O = model.addVars(parameters.locations, vtype=GRB.BINARY, name="assign_community")
+# a
+# f
+# h
+J = model.addVars(parameters.locations, vtype=GRB.BINARY, name="assigned_to_group")
 
 # Actualización del modelo
 model.update()
 
 # Restricciones
+# Cumplir con el presupuesto
+model.addConstrs((quicksum(parameters.locations_dict[location]["Costo traslado"] * O[location] for location in parameters.locations) - 
+    (1/3)*quicksum(parameters.locations_dict[location]["Costo traslado"] * J[location] for location in parameters.locations if location not in parameters.locations_plane) <= parameters.budget),
+    name="r2")
+
+
 
 # función objetivo
-# obj = 
-# model.setObjective(obj, GRB.MAXIMIZE)
+obj = quicksum(
+    parameters.volunteers_info.iloc[volunteer]["hability_{}".format(task)] * Y[volunteer][task]
+    for volunteer in parameters.volunteers
+    for task in range(1, 6)
+)
+model.setObjective(obj, GRB.MAXIMIZE)
 
 if __name__ == "__main__":
     model.optimize()
