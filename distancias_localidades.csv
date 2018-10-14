@@ -1,10 +1,10 @@
-﻿Localidad,Pindaco,Folilco,Lenca,Villarrica,Barros Arana,Entre Ríos,Villa Las Rosas,Santa Clara,Parral
+﻿Localidad,Pindaco,Folilco,Lenca,Villarrica,Barros Arana,Entre Rios,Villa Las Rosas,Santa Clara,Parral
 Pindaco,X,401,239,509,557,525,775,793,889
 Folilco,401,X,242,106,169,149,398,417,514
 Lenca,239,242,X,349,393,366,615,633,731
-Villarrica,509,106,349,X,"83,4","17,9",305,324,421
-Barros Arana,557,169,393,"83,4",X,"40,4",287,306,403
-Entre Rios,525,149,366,"17,9","40,4",X,287,306,403
+Villarrica,509,106,349,X,83.4,17.9,305,324,421
+Barros Arana,557,169,393,83.4,X,40.4,287,306,403
+Entre Rios,525,149,366,19.7,40.4,X,287,306,403
 Villa Las Rosas,775,398,615,305,287,287,X,123,220
 Santa Clara,793,417,633,324,306,306,123,X,101
 Parral,889,514,731,421,403,403,220,101,X
