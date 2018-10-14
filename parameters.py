@@ -16,6 +16,7 @@ distances_dict = distances.T.to_dict()
 budget = 1000000
 mu = 5
 delta = 5
+gamma = 5
 max_distance_to_construction = 10
 
 print(volunteers_info)

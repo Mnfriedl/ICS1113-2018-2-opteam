@@ -55,8 +55,14 @@ model.addConstrs((quicksum(X[volunteer, location] * parameters.volunteers_info.i
 model.addConstrs((quicksum(X[volunteer, location] * (1 - parameters.volunteers_info.iloc[volunteer][gender]) for volunteer in parameters.volunteers) <= (parameters.delta / 100) * quicksum(X[volunteer, location] for volunteer in parameters.volunteers) for location in parameters.locations),
     name="r10")
 
+# Cantidad de personas de la misma carrera por comunidad
+model.addConstrs((quicksum(X[volunteer, location] * (1 if parameters.volunteers_info.iloc[volunteer][career] == career else 0) for volunteer in parameters.volunteers) <= parameters.gamma for location in parameters.locations for career in parameters.careers),
+    name="r11")
+
+# Cantidad de personas por tarea por comunidad
+
+
 # función objetivo
-#! Se está ocupando pandas, puede que sea necesario cambiarlo
 obj = quicksum(
     parameters.volunteers_info.iloc[volunteer]["hability_{}".format(task)] * Y[(volunteer, task)]
     for volunteer in parameters.volunteers
