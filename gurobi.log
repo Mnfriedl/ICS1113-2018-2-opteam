@@ -206,3 +206,31 @@ Academic license - for non-commercial use only
 Gurobi 8.0.1 (win64, Python) logging started 10/14/18 18:39:36
 
 Academic license - for non-commercial use only
+
+Gurobi 8.0.1 (win64, Python) logging started 10/14/18 18:47:47
+
+Academic license - for non-commercial use only
+
+Gurobi 8.0.1 (win64, Python) logging started 10/14/18 18:50:37
+
+Academic license - for non-commercial use only
+Optimize a model with 859 rows, 17298 columns and 28837 nonzeros
+Variable types: 0 continuous, 17298 integer (17289 binary)
+Coefficient statistics:
+  Matrix range     [5e-02, 6e+05]
+  Objective range  [2e+00, 8e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 6e+05]
+Presolve removed 625 rows and 14271 columns
+Presolve time: 0.00s
+
+Explored 0 nodes (0 simplex iterations) in 0.01 seconds
+Thread count was 1 (of 8 available processors)
+
+Solution count 0
+
+Model is infeasible
+Best objective -, best bound -, gap -
+
+    Variable            X 
+-------------------------
