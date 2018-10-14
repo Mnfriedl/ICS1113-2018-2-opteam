@@ -15,4 +15,4 @@ distances_dict = distances.T.to_dict()
 
 budget = 1000000
 
-print(locations_dict)
+print(volunteers)
