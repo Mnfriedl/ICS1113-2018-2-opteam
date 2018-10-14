@@ -68,8 +68,8 @@ model.addConstrs((H[g] >= H[g + 1] for g in range(1, 9)),
     name="r13")
 
 #! Distancia máxima entre comunidades del mismo grupo
-#model.addConstrs((parameters.distances_dict[c1][c2] <= parameters.max_distance_between_communities + (1 - F[c1, c2, g]) * parameters.k for c1 in [x for x in parameters.locations if x not in parameters.locations_plane] for c2 in [x for x in parameters.locations if x not in parameters.locations_plane] if c1 != c2 for g in range(1, 10)),
-#    name="r14")
+model.addConstrs((int(parameters.distances_dict[c1][c2]) <= parameters.max_distance_between_communities + (1 - F[c1, c2, g]) * parameters.k for c1 in [x for x in parameters.locations if x not in parameters.locations_plane] for c2 in [x for x in parameters.locations if x not in parameters.locations_plane] if c1 != c2 for g in range(1, 10)),
+    name="r14")
 
 # Los grupos tienen 0 o 3 personas cada uno
 model.addConstrs((quicksum(A[location, g] for location in [x for x in parameters.locations if x not in parameters.locations_plane]) == 3*H[g] for g in range(1, 10)),
@@ -84,7 +84,6 @@ model.addConstrs((J[location] <= 1 for location in [x for x in parameters.locati
     name="r17")
 
 # Relación entre variables
-
 
 # Naturaleza de las variables
 model.addConstrs((J[location] >= 0 for location in parameters.locations),
