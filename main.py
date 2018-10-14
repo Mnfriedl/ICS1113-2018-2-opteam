@@ -84,6 +84,20 @@ model.addConstrs((J[location] <= 1 for location in [x for x in parameters.locati
     name="r17")
 
 # Relación entre variables
+model.addConstrs((W[v, t, c] >= X[v, c] + Y[v, t] - 1 for v in parameters.volunteers for c in parameters.locations for t in range(1, 6)),
+    name="r18")
+model.addConstrs((W[v, t, c] <= X[v, c] for v in parameters.volunteers for c in parameters.locations for t in range(1, 6)),
+    name="r19")
+model.addConstrs((W[v, t, c] <= Y[v, t] for v in parameters.volunteers for c in parameters.locations for t in range(1, 6)),
+    name="r20")
+model.addConstrs((F[c1, c2, g] >= A[c1, g] + A[c2, g] - 1 for c1 in [x for x in parameters.locations if x not in parameters.locations_plane] for c2 in [x for x in parameters.locations if x not in parameters.locations_plane] for g in range(1, 10)),
+    name="r21")
+model.addConstrs((F[c1, c2, g] <= A[c1, g] for c1 in [x for x in parameters.locations if x not in parameters.locations_plane] for c2 in [x for x in parameters.locations if x not in parameters.locations_plane] for g in range(1, 10)),
+    name="r22")
+model.addConstrs((F[c1, c2, g] <= A[c2, g] for c1 in [x for x in parameters.locations if x not in parameters.locations_plane] for c2 in [x for x in parameters.locations if x not in parameters.locations_plane] for g in range(1, 10)),
+    name="r23")
+model.addConstrs((J[c] == quicksum(A[c, g] for g in range(1, 10)) for c in [x for x in parameters.locations if x not in parameters.locations_plane]),
+    name="r24")
 
 # Naturaleza de las variables
 model.addConstrs((J[location] >= 0 for location in parameters.locations),
