@@ -17,6 +17,7 @@ J = model.addVars(parameters.locations, vtype=GRB.BINARY, name="assigned_to_grou
 
 # Actualización del modelo
 model.update()
+
 # Restricciones
 # Cumplir con el presupuesto
 #! Esta restricción cambió
@@ -45,6 +46,8 @@ model.addConstrs((parameters.locations_dict[location]["Distancia a alimentos"] *
     name="r7-2")
 
 # Facilidad de acceso
+model.addConstrs((parameters.locations_dict[location]["Distancia al lugar de construcción"] * O[location] <= parameters.max_distance_to_construction for location in parameters.locations),
+    name="r8")
 
 
 # función objetivo

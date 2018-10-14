@@ -14,5 +14,6 @@ locations_dict = locations_info.T.to_dict()
 distances_dict = distances.T.to_dict()
 
 budget = 1000000
+max_distance_to_construction = 10
 
-print(volunteers)
+print(locations_dict)
