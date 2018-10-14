@@ -24,6 +24,7 @@ model.addConstrs((quicksum(parameters.locations_dict[location]["Costo traslado"]
     (1/3)*quicksum(parameters.locations_dict[location]["Costo traslado"] * J[location] for location in parameters.locations if location not in parameters.locations_plane) <= parameters.budget),
     name="r2")
 
+# Tamaño de los grupos
 
 
 # función objetivo
