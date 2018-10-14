@@ -7,7 +7,7 @@ model = Model("Trabajo pais")
 
 # Variables
 X = model.addVars(parameters.volunteers, parameters.locations, vtype=GRB.BINARY, name="assigned_to_community")
-Y = model.addVars(parameters.volunteers, parameters.tasks, vtype=GRB.BINARY, name="assigned_to_task")
+Y = model.addVars(parameters.volunteers, range(1, 6), vtype=GRB.BINARY, name="assigned_to_task")
 W = model.addVars(parameters.volunteers, parameters.tasks, parameters.locations, vtype=GRB.BINARY, name="assigned_to_community_on_task")
 O = model.addVars(parameters.locations, vtype=GRB.BINARY, name="assign_community")
 #? A
@@ -45,6 +45,7 @@ model.addConstrs((parameters.locations_dict[location]["Distancia a posta más ce
 model.addConstrs((parameters.locations_dict[location]["Distancia a alimentos"] * O[location] <= parameters.locations_dict[location]["Distancia máxima a alimentos"] for location in parameters.locations),
     name="r7-2")
 
+# Facilidad de acceso
 
 
 # función objetivo
