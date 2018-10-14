@@ -10,16 +10,17 @@ X = model.addVars(parameters.volunteers, parameters.locations, vtype=GRB.BINARY,
 Y = model.addVars(parameters.volunteers, parameters.tasks, vtype=GRB.BINARY, name="assigned_to_task")
 W = model.addVars(parameters.volunteers, parameters.tasks, parameters.locations, vtype=GRB.BINARY, name="assigned_to_community_on_task")
 O = model.addVars(parameters.locations, vtype=GRB.BINARY, name="assign_community")
-#? a
-#? f
-#? h
+#? A
+#? F
+#? H
 J = model.addVars(parameters.locations, vtype=GRB.BINARY, name="assigned_to_group")
 
 # Actualización del modelo
 model.update()
 
 # Restricciones
-#! Cumplir con el presupuesto
+# Cumplir con el presupuesto
+#! Esta restricción cambió
 model.addConstrs((quicksum(parameters.locations_dict[location]["Costo traslado"] * O[location] for location in parameters.locations) - 
     (1/3)*quicksum(parameters.locations_dict[location]["Costo traslado"] * J[location] for location in parameters.locations if location not in parameters.locations_plane) <= parameters.budget),
     name="r2")
@@ -38,7 +39,8 @@ model.addConstrs((quicksum(X[volunteer][location] for volunteer in parameters.vo
 model.addConstrs((quicksum(Y[volunteer][task] for task in range(1, 6)) == 1 for volunteer in parameters.volunteers),
     name="r6")
 
-#! función objetivo
+# función objetivo
+#! Se está ocupando pandas, puede que sea necesario cambiarlo
 obj = quicksum(
     parameters.volunteers_info.iloc[volunteer]["hability_{}".format(task)] * Y[volunteer][task]
     for volunteer in parameters.volunteers
