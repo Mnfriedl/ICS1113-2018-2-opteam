@@ -2,6 +2,7 @@
 
 from gurobipy import *
 import parameters
+import json
 
 model = Model("Trabajo pais")
 
@@ -112,5 +113,10 @@ model.setObjective(obj, GRB.MAXIMIZE)
 if __name__ == "__main__":
     model.optimize()
     #model.computeIIS()
-    #model.write("model.ilp")
-    model.printAttr("X")
+    model.write("model.sol")
+    # Xdic = dict()
+    # for i in X:
+    #     Xdic[string(i)] = X[i].X
+    # with open('x.json', 'w') as fp:
+    #     json.dump(Xdic, fp)
+
