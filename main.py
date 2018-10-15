@@ -30,7 +30,7 @@ model.addConstrs((quicksum(X[(volunteer, location)] for volunteer in parameters.
     name="r4")
 
 # Voluntarios pueden pertenecer a una sola misión
-model.addConstrs((quicksum(X[(volunteer, location)] for volunteer in parameters.volunteers) == 1 for location in parameters.locations),
+model.addConstrs((quicksum(X[(volunteer, location)] for location in parameters.locations) == 1 for volunteer in parameters.volunteers),
     name="r5")
 
 # Voluntarios son asignados a una tarea
@@ -54,7 +54,7 @@ model.addConstrs((quicksum(X[volunteer, location] * (1 - parameters.volunteers_i
     name="r10")
 
 # Cantidad de personas de la misma carrera por comunidad
-model.addConstrs((quicksum(X[volunteer, location] * (1 if parameters.volunteers_info.iloc[volunteer][career] == career else 0) for volunteer in parameters.volunteers) <= parameters.gamma for location in parameters.locations for career in parameters.careers),
+model.addConstrs((quicksum(X[volunteer, location] * (1 if parameters.volunteers_info.iloc[volunteer]["career"] == career else 0) for volunteer in parameters.volunteers) <= parameters.gamma for location in parameters.locations for career in parameters.careers),
     name="r11")
 
 # Cantidad de personas por tarea por comunidad
