@@ -4,7 +4,7 @@ import math
 
 MIN_VOLS = 270
 MAX_VOLS = 315
-TOTAL_VOLS = 270
+TOTAL_VOLS = 100
 
 LOCATIONS = 9
 
