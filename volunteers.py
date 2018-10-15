@@ -11,7 +11,7 @@ LOCATIONS = 9
 WOMEN_RATE = 0.55
 CAREERS = 40*[1] + 25*[2] + 15*[3] + 20*[4] + 10*[5]
 TASKS = 5
-GENDER = math.floor(WOMEN_RATE*TOTAL_VOLS)*[0] + math.ceil((1-WOMEN_RATE)*TOTAL_VOLS)*[1]
+GENDER = math.floor(WOMEN_RATE*TOTAL_VOLS)*[1] + math.ceil((1-WOMEN_RATE)*TOTAL_VOLS)*[0]
 
 VOLS = []
 for i in range(TOTAL_VOLS):
