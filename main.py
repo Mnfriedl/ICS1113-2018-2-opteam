@@ -58,7 +58,7 @@ model.addConstrs((quicksum(X[volunteer, location] * (1 if parameters.volunteers_
     name="r11")
 
 # Cantidad de personas por tarea por comunidad
-model.addConstrs((quicksum(W[volunteer, task, location] for volunteer in parameters.volunteers) <= parameters.tasks_info.iloc[parameters.locations.index(location)]["min_vols_task_{}".format(task)] for location in parameters.locations for task in range(1, 6)),
+model.addConstrs((quicksum(W[volunteer, task, location] for volunteer in parameters.volunteers) >= parameters.tasks_info.iloc[parameters.locations.index(location)]["min_vols_task_{}".format(task)] * O[location] for location in parameters.locations for task in range(1, 6)),
     name="r12")
 
 # Utilizar solo los primeros grupos
