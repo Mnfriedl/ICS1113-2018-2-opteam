@@ -114,5 +114,11 @@ if __name__ == "__main__":
     model.optimize()
     #model.computeIIS()
     #model.write("model.sol")
-    
+    output = dict()
+    for i in [(X, 'X'), (Y, 'Y'), (W, 'W'), (O, 'O'), (A, 'A'), (F, 'F'), (H, 'H'), (J, 'J')]:
+        output[i[1]] = dict()
+        for j in i[0]:
+            output[i[1]][str(j)] = i[0][j].X
+    with open('results.json', 'w') as fp:
+        json.dump(output, fp)
 
