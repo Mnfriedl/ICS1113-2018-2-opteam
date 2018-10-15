@@ -111,6 +111,6 @@ model.setObjective(obj, GRB.MAXIMIZE)
 
 if __name__ == "__main__":
     model.optimize()
-    model.computeIIS()
-    model.write("model.ilp")
-    #model.printAttr("X")
+    #model.computeIIS()
+    #model.write("model.ilp")
+    model.printAttr("X")

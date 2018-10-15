@@ -14,12 +14,12 @@ locations_plane = ["Pindaco", "Folilco"]
 locations_dict = locations_info.T.to_dict()
 distances_dict = distances.T.to_dict()
 
-budget = 100000000000
-mu = 100
-delta = 100
-gamma = 50
-max_distance_to_construction = 1000
-max_distance_between_communities = 5000
+budget = 5000000
+mu = 60
+delta = 55
+gamma = 15
+max_distance_to_construction = 25
+max_distance_between_communities = 500
 k = 590000
 
 if __name__ == "__main__":
