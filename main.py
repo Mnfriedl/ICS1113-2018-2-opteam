@@ -112,6 +112,7 @@ model.setObjective(obj, GRB.MAXIMIZE)
 
 if __name__ == "__main__":
     model.optimize()
+    print(model.ObjVal)
     #model.computeIIS()
     #model.write("model.sol")
     output = dict()
